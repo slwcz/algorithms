@@ -34,7 +34,7 @@ public class BinarySearch {
         commandReader.close();
     }
 
-    public static int performBinarySearch(int[] input, int number) {
+    private static int performBinarySearch(int[] input, int number) {
         int low = 0;
         int high = input.length - 1;
 
