@@ -15,7 +15,7 @@ import static java.util.Arrays.*;
  * <li>uses Stack to replace recursion</li>
  * <li>faster than recursive algorithm</li>
  * </ul>
- * <p>
+ * <p />
  * See http://javarevisited.blogspot.cz/2016/09/iterative-quicksort-example-in-java-without-recursion.html.
  *
  * @since 2016-12-26
@@ -43,31 +43,33 @@ public class QuickSortIterative {
                 continue;
             }
 
-            int p = start + ((end - start) / 2);
-            p = partition(numbers, p, start, end);
-            stack.push(p + 1);
+            int pivotPosition = start + ((end - start) / 2);
+            pivotPosition = partition(numbers, pivotPosition, start, end);
+
+            stack.push(pivotPosition + 1);
             stack.push(end);
+
             stack.push(start);
-            stack.push(p);
+            stack.push(pivotPosition);
         }
     }
 
     private static int partition(Integer[] input, int position, int start, int end) {
         int l = start;
         int h = end - 2;
-        int piv = input[position];
+        int pivot = input[position];
         swap(input, position, end - 1);
         while (l < h) {
-            if (input[l] < piv) {
+            if (input[l] < pivot) {
                 l++;
-            } else if (input[h] >= piv) {
+            } else if (input[h] >= pivot) {
                 h--;
             } else {
                 swap(input, l, h);
             }
         }
         int idx = h;
-        if (input[h] < piv) {
+        if (input[h] < pivot) {
             idx++;
         }
         swap(input, end - 1, idx);
